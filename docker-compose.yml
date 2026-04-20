@@ -1,0 +1,23 @@
+volumes:
+  benchmark_localstack_data: {}
+
+services:
+  localstack:
+    image: localstack/localstack:4.14
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=sqs,cloudformation
+      - DEBUG=0
+      - AWS_DEFAULT_REGION=us-east-1
+      - HOSTNAME=localhost
+    volumes:
+      - "./localstack/scripts/0001_initial.sh:/etc/localstack/init/ready.d/script.sh"
+      - "./localstack/cloud-formation/localstack-cf.yml:/opt/templates/localstack-cf.yml:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - benchmark_localstack_data:/var/lib/localstack
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"

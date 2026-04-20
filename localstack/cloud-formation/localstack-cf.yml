@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation for Localstack
+Resources:
+  CeleryQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: CeleryQueue
+
+  TaskIqQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: TaskIqQueue
