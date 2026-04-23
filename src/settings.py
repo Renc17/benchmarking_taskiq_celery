@@ -37,9 +37,10 @@ class CeleryConfig(BaseModel):
 
 class TaskIQConfig(BaseModel):
     broker_transport_options: dict = {
-        "sqs_queue_url": env.str("TASKIQ_QUEUE_URL", "http://localhost:4566/000000000000/TaskIqQueue"),
+        "sqs_queue_name": env.str("TASKIQ_QUEUE_NAME", "TaskIqQueue"),
         "region_name": env.str("TASKIQ_SQS_REGION_NAME", "us-east-1"),
-        "endpoint_url": env.str("TASKIQ_SQS_ENDPOINT_URL", "http://localhost:4566")
+        "endpoint_url": env.str("TASKIQ_SQS_ENDPOINT_URL", "http://localhost:4566"),
+        "max_number_of_messages": 10,
     }
     result_backend: str = env.str("TASKIQ_RESULT_BACKEND", "redis://localhost:6379/1")
 

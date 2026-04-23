@@ -1,9 +1,9 @@
 """TaskIQ application configured with the SQS broker via LocalStack."""
 
-from src.taskiq_app.brokers.sqs import SQSBroker
 from src.settings import settings
 
 from taskiq_redis import RedisAsyncResultBackend
+from taskiq_aio_sqs import SQSBroker
 
 config = settings.TASKIQ_CONFIG.broker_transport_options
 
