@@ -87,7 +87,7 @@ The defaults target `localhost:4566`. Override if needed:
 ```bash
 export CELERY_BROKER_URL="sqs://fake:fake@localstack:4566/0"
 export CELERY_QUEUE_URL="http://localhost:4566/000000000000/CeleryQueue"
-export TASKIQ_QUEUE_URL="http://localhost:4566/000000000000/TaskIqQueue"
+export TASKIQ_QUEUE_NAME="TaskIqQueue"
 ```
 
 ---
